@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="kayiraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="agent">
+          <Key>
+            <PropertyRef Name="matricule" />
+          </Key>
+          <Property Name="matricule" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_agent" Type="nvarchar(max)" />
+          <Property Name="prenom_agent" Type="nvarchar(max)" />
+          <Property Name="photo_agent" Type="nvarchar(max)" />
+          <Property Name="adress" Type="nvarchar(max)" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="pass" Type="nvarchar(max)" />
+          <Property Name="role" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="contibuable">
+          <Key>
+            <PropertyRef Name="id_contibuable" />
+          </Key>
+          <Property Name="id_contibuable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_contibuable" Type="nvarchar(max)" />
+          <Property Name="prenom_contibuable" Type="nvarchar(max)" />
+          <Property Name="cni_contibuable" Type="nvarchar(max)" />
+          <Property Name="photo_contibuable" Type="nvarchar(max)" />
+          <Property Name="telephon_contibuable" Type="nvarchar(max)" />
+          <Property Name="activite" Type="nvarchar(max)" />
+          <Property Name="adresse" Type="nvarchar(max)" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="pass" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="quitance">
+          <Key>
+            <PropertyRef Name="id_taxe" />
+          </Key>
+          <Property Name="id_taxe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_contri" Type="int" />
+          <Property Name="matricule" Type="nchar" MaxLength="10" />
+          <Property Name="taux" Type="int" />
+          <Property Name="anne" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="etat" Type="nchar" MaxLength="10" />
+          <Property Name="bordereau" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="kayiraModelStoreContainer">
+          <EntitySet Name="agent" EntityType="Self.agent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contibuable" EntityType="Self.contibuable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="quitance" EntityType="Self.quitance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kayiraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="agent">
+          <Key>
+            <PropertyRef Name="matricule" />
+          </Key>
+          <Property Name="matricule" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nom_agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prenom_agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="photo_agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="contibuable">
+          <Key>
+            <PropertyRef Name="id_contibuable" />
+          </Key>
+          <Property Name="id_contibuable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_contibuable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prenom_contibuable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cni_contibuable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="photo_contibuable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephon_contibuable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="activite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="quitance">
+          <Key>
+            <PropertyRef Name="id_taxe" />
+          </Key>
+          <Property Name="id_taxe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_contri" Type="Int32" />
+          <Property Name="matricule" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="taux" Type="Int32" />
+          <Property Name="anne" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="etat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bordereau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="kayiraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="agents" EntityType="Self.agent" />
+          <EntitySet Name="contibuables" EntityType="Self.contibuable" />
+          <EntitySet Name="quitances" EntityType="Self.quitance" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kayiraModelStoreContainer" CdmEntityContainer="kayiraEntities">
+          <EntitySetMapping Name="agents">
+            <EntityTypeMapping TypeName="kayiraModel.agent">
+              <MappingFragment StoreEntitySet="agent">
+                <ScalarProperty Name="matricule" ColumnName="matricule" />
+                <ScalarProperty Name="nom_agent" ColumnName="nom_agent" />
+                <ScalarProperty Name="prenom_agent" ColumnName="prenom_agent" />
+                <ScalarProperty Name="photo_agent" ColumnName="photo_agent" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contibuables">
+            <EntityTypeMapping TypeName="kayiraModel.contibuable">
+              <MappingFragment StoreEntitySet="contibuable">
+                <ScalarProperty Name="id_contibuable" ColumnName="id_contibuable" />
+                <ScalarProperty Name="nom_contibuable" ColumnName="nom_contibuable" />
+                <ScalarProperty Name="prenom_contibuable" ColumnName="prenom_contibuable" />
+                <ScalarProperty Name="cni_contibuable" ColumnName="cni_contibuable" />
+                <ScalarProperty Name="photo_contibuable" ColumnName="photo_contibuable" />
+                <ScalarProperty Name="telephon_contibuable" ColumnName="telephon_contibuable" />
+                <ScalarProperty Name="activite" ColumnName="activite" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quitances">
+            <EntityTypeMapping TypeName="kayiraModel.quitance">
+              <MappingFragment StoreEntitySet="quitance">
+                <ScalarProperty Name="id_taxe" ColumnName="id_taxe" />
+                <ScalarProperty Name="id_contri" ColumnName="id_contri" />
+                <ScalarProperty Name="matricule" ColumnName="matricule" />
+                <ScalarProperty Name="taux" ColumnName="taux" />
+                <ScalarProperty Name="anne" ColumnName="anne" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="bordereau" ColumnName="bordereau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="kayiraModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

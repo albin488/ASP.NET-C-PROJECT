@@ -1,0 +1,168 @@
+﻿
+<section class="site-min-height">
+   
+    <script type="text/javascript">
+        var from;
+        $('#from').on('change'), function () {
+            from = $(this).val();
+            $('#to').prop('min', function () {
+                return from;
+            })
+        }
+        var to;
+        $('#to').on('change'), function () {
+            to = $(this).val();
+            $('#from').prop('max', function () {
+                return to;
+            })
+        }
+    </script>
+    <!-- /row -->
+    <div class="row content-panel">
+        <h2 class="center">Rapport</h2>
+        <div class="col-md-10 col-md-offset-1 mt mb">
+         
+         
+            <div class="col-md-4">
+                <div class="input-group input-large" data-date="01/01/2014" data-date-format="dd/mm/yyyy">
+                    <input type="text" class="form-control dpd1" name="from">
+                    <span class="input-group-addon">To</span>
+                    <input type="text" class="form-control dpd2" name="to">
+                </div>
+                <span class="help-block">Select date range</span>
+            </div>
+            <div class="adv-table">
+
+                <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+
+                    <thead>
+
+                        <tr>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <div class="accordion-holder" id="accordion2">
+
+                            @foreach (var data in ViewBag.listetaxe)
+                            {
+                                foreach (var contibuable in ViewBag.listecontri)
+                                {
+                                    foreach (var agent in ViewBag.listagent)
+                                    {
+                                        string etat = data.etat;
+
+                                        if (data.id_contri == contibuable.id_contibuable && etat == "1" && data.matricule == agent.matri)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="accordion-group" role="tablist" aria-multiselectable="true">
+
+                                                        <div class="accordion-heading" role="tab">
+                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#@data.id_taxe" aria-expanded="false" aria-controls="@data.id_taxe">
+
+                                                                <table>
+                                                                    <tr>
+                                                                        <td><em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>  @contibuable.nom_contibuable   @contibuable.prenom_contibuable </td>
+                                                                        <td>  @data.date</td>
+                                                                        <td>agent: @agent.nom_agent @agent.prenom_agent</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </a>
+                                                        </div>
+                                                        <div id="@data.id_taxe" class="panel-collapse collapse ">
+                                                            <div class="accordion-inner" id="printArea">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="custom-box">
+                                                                                <div class="servicetitle">
+                                                                                    <h4>Taxe</h4>
+                                                                                    <hr>
+                                                                                </div>
+                                                                                <div class="icn-main-container">
+                                                                                    <span class="icn-container">@data.taux</span>
+                                                                                </div>
+                                                                                <ul class="pricing">
+                                                                                    <li>date de payement @data.date</li>
+                                                                                    <li>annee d'imposition @data.anne</li>
+                                                                                    <li>montant paye @data.taux fbu</li>
+
+                                                                                </ul>
+                                                                            </div>
+                                                                            <!-- end custombox -->
+                                                                        </div>
+                                                                        <!-- end col-4 -->
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="custom-box">
+                                                                                <div class="servicetitle">
+                                                                                    <h4>Cotribuable</h4>
+                                                                                    <hr>
+                                                                                </div>
+                                                                                <div class="icn-main-container">
+                                                                                    <img class="img-circle" src="~/fichier/@contibuable.photo_contibuable" width="130" />
+                                                                                </div>
+                                                                                <ul class="pricing">
+                                                                                    <li>@contibuable.nom_contibuable   @contibuable.prenom_contibuable</li>
+                                                                                    <li>tel @contibuable.telephon_contibuable</li>
+                                                                                    <li>adress @contibuable.adresse</li>
+
+                                                                                </ul>
+                                                                            </div>
+                                                                            <!-- end custombox -->
+                                                                        </div>
+                                                                        <!-- end col-4 -->
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="custom-box">
+                                                                                <div class="servicetitle">
+                                                                                    <h4>Agent</h4>
+                                                                                    <hr>
+                                                                                </div>
+                                                                                <div class="icn-main-container">
+                                                                                    <img class="img-circle" src="~/fichier/@agent.photo_agent" width="130" />
+                                                                                </div>
+                                                                                <ul class="pricing">
+                                                                                    <li>@agent.nom_agent @agent.prenom_agent</li>
+                                                                                    <li>matricule @agent.matri</li>
+                                                                                    <li>adress @agent.adress</li>
+
+                                                                                </ul>
+                                                                            </div>
+                                                                            <!-- end custombox -->
+                                                                        </div>
+                                                                        <!-- end col-4 -->
+
+                                                                    </div>
+                                                                    <!--  /col-lg-12 -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <a class="btn btn-dark fa fa-print " onclick="printDiv('printArea')"></a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <a class="btn btn-dark fa fa-print " onclick="printDiv('accordion2')"></a>
+                </div>
+
+            </div><!-- end accordion -->
+        </div>
+            <!-- col-md-10 -->
+        </div>
+    <!--  /row -->
+</section>

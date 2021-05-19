@@ -1,0 +1,143 @@
+﻿@model Taxes.Models.contibuable
+
+<div class="row mt">
+    <div class="col-sm-3">
+
+        <section class="panel">
+            <div class="panel-body">
+               
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="~/fichier/@Model.photo_contibuable" alt="Image" height="100%" width="100%">
+                </a>
+                <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered hover">
+
+                    <thead class="center">
+
+
+                    </thead>
+
+                    <tbody class="center">
+                        <tr class="gradeA">
+                            <td>  Prenom</td>
+                            <td></td>
+                            <td>@Session["prenom"]</td>
+                        </tr>
+                        <tr class="gradeA">
+                            <td>Nom</td>
+                            <td></td>
+                            <td>@Session["nom"]</td>
+                        </tr>
+                        <tr class="gradeA">
+                            <td>Telephone</td>
+                            <td></td>
+                            <td>@Session["tel"]</td>
+                        </tr>
+                        <tr class="gradeA">
+                            <td>Adress</td>
+                            <td></td>
+                            <td>@Model.adresse</td>
+                        </tr>
+                        <tr class="gradeA">
+                            <td>CNI</td>
+                            <td></td>
+                            <td>@Model.cni_contibuable</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-sm-9">
+        <section class="panel">
+            <header class="panel-heading wht-bg">
+                <h4 class="gen-case">
+                   Ajouter un taxe
+
+                </h4>
+            </header>
+            <div class="panel-body">
+
+                <div class="compose-mail">
+                    <form role="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="to" class="">Taux</label>
+
+                            <input type="number" tabindex="1" id="to" class="form-control" value="@Session["activi"]" name="taux" disabled />
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="anne" class="">anne fiscale</label>
+                            <div class="col-md-3 col-xs-11">
+
+                                <span class="help-block">Selectionner lannee</span>
+                                <div data-date-minviewmode="years" data-date-viewmode="years" data-date-format="yyyy" data-date="/2014" class="input-append date dpMonths">
+                                    <input type="text" readonly="" value="2014" size="16" class="form-control" id="anne" name="anne">
+                                    <span class="input-group-btn add-on">
+                                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="" id="year" />
+                            <script type="text/javascript">
+                                $("#year").datepicker({
+                                   
+                                    format: " yyyy",
+                                    vieuMode: "years",
+                                     minViewMode: "years"
+                                });
+                                $("#year").datepicker({
+
+                                    format: " yyyy",
+                                    vieuMode: "years",
+                                    minViewMode: "years"
+                                });
+                            </script>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id_contri" value="@Model.id_contibuable" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phot" class="">bordereau </label>
+                            <div class="col-md-9 center">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                        <span class="btn btn-theme02 btn-file">
+                                            <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selectionner les bordereaux</span>
+                                            <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                            <input type="file" class="default" name="file" id="phot" required />
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="cc" class="">Cc:</label>
+                            <input type="text" tabindex="2" id="cc" class="form-control">
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="bcc" class="">Bcc:</label>
+                            <input type="text" tabindex="2" id="bcc" class="form-control">
+                        </div>
+
+                        <div class="compose-btn">
+                            <button class="btn btn-theme btn-sm" type="submit"><i class="fa fa-check"></i>Envoyer</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

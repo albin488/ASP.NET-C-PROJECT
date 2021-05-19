@@ -1,0 +1,91 @@
+﻿<section class="site-min-height">
+    <h3><i class="fa fa-angle-right"></i> Gestion des Utilisateurs</h3>
+    <!-- page start-->
+    <div id="morris">
+        <div class="row mt">
+            <div class="col-lg-6">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i> Agent</h4>
+                    <div class="panel-body">
+                        <div class="graph">
+                            <section id="no-more-tables">
+                                <table class="table table-bordered table-striped table-condensed cf">
+                                    <thead class="cf">
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>nom</th>
+                                            <th class="numeric">login</th>
+                                            <th class="numeric">role</th>
+                                            <th class="numeric">etat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var agent in ViewBag.listagent)
+                                        {
+                                            <tr>
+
+                                                <td data-title="Code">@agent.matri</td>
+                                                <td data-title="nom">@agent.nom_agent </td>
+                                                <td class="numeric" data-title="Price">@agent.login</td>
+                                                <td class="numeric" data-title="Change">@if (agent.role == "1")
+                                                { <p>admin</p> }
+                                                else { <p>utilisateur</p>} </td>
+                                                <td class="numeric" data-title="Change %">@if (agent.matricule == "1111111111")
+                                                {<i class="fa fa-unlock" aria-hidden="true"></i> }
+                                                else { <i class="fa fa-lock" aria-hidden="true"></i> }</td>
+                                                <td>@if (agent.matricule == "1111111111")
+                                                {<a class="btn btn-primary btn-xs fa fa-lock" href="~/utilisateur/Blockagent/@agent.matri"></a>}
+                                                else {<a class="btn btn-primary btn-xs fa fa-unlock" href="~/utilisateur/Autagent/@agent.matri"></a> }</td>
+                                                
+                                            </tr>
+                                        }
+                                        </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i> Contribuable</h4>
+                    <div class="panel-body">
+                        <div  class="graph"><section id="no-more-tables">
+    <table class="table table-bordered table-striped table-condensed cf">
+        <thead class="cf">
+            <tr>
+                <th>Code</th>
+                <th>nom</th>
+                <th class="numeric">Login</th>
+                <th class="numeric">etat</th>
+          
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contibuable in ViewBag.listcontr)
+            {
+                <tr>
+                    <td data-title="Code">@contibuable.id_contibuable</td>
+                    <td data-title="Company">@contibuable.nom_contibuable</td>
+                    <td class="numeric" data-title="Price">@contibuable.login</td>
+                    <td class="numeric" data-title="Change">@if (contibuable.etat == 0)
+                    { <i class="fa fa-lock" aria-hidden="true"></i>}
+                    else {<i class="fa fa-unlock" aria-hidden="true"></i> }</td>
+                    <td>
+                        @if (contibuable.etat == 0){<a class="btn btn-primary btn-xs fa fa-unlock" href="~/utilisateur/Autcont/@contibuable.id_contibuable"></a> }
+                        else {<a class="btn btn-primary btn-xs fa fa-lock" href="~/utilisateur/Blockcont/@contibuable.id_contibuable"></a> }
+                        </td>
+                    
+                </tr>
+            }
+            </tbody>
+    </table>
+</section></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <!-- page end-->
+</section>

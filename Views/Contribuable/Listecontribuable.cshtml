@@ -1,0 +1,79 @@
+﻿
+<h3><i class="fa fa-angle-right"></i> Liste des Contribuable</h3>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+
+                <thead class="center">
+
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th class="hidden-phone">Prenom</th>
+                        <th class="hidden-phone">CNI</th>
+                        <th class="hidden-phone">Telephone</th>
+                        <th class="hidden-phone">Activite</th>
+                        <th class="hidden-phone">Adress</th>
+                        <th class="hidden-phone"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in ViewBag.listecontribuable)
+                    {
+                    <tr class="gradeA">
+                        <td>@data.id_contibuable</td>
+                        <td><a class="fancybox" href="~/fichier/@data.photo_contibuable"> @data.nom_contibuable</a></td>
+                        <div class="overlay"></div>
+                        <td><a> @data.prenom_contibuable</a></td>
+                        <td class="center">@data.cni_contibuable</td>
+                        <td class="center">@data.telephon_contibuable</td>
+                        <td class="center">@data.activite</td>
+                        <td class="center">@data.adresse</td>
+                        <td class="center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="btn btn-round btn-success fa fa-check" href="#"></a></li>
+                                    <li><a class="btn btn-round btn-warning fa fa-pencil" href="~/Contribuable/editcontribuable/@data.id_contibuable"></a></li>
+                                    <li><a class="btn btn-round btn-danger fa fa-trash" href="~/Contribuable/delcontribuable/@data.id_contibuable"></a></li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                     
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <div class="modal fade" id="photomo" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content modal-lg">
+                    <div class="modal-header ">
+
+                        <div class="form-group text-right">
+                            <a name="" id="" class="btn btn-default" href="~/Contribuable/Listecontribuable" role="button"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                        </div>
+
+                    </div>
+                    <div class="modal-body">
+                       <img src=""/>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+<!-- /row -->

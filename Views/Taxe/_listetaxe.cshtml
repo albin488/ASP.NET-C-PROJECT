@@ -1,0 +1,110 @@
+﻿@{
+    Layout= "~/Views/Shared/_Layout.cshtml";
+}
+@model Taxes.Models.quitance
+
+<div class="chat-room mt">
+    <aside class="mid-side ">
+
+
+        <div class="chat-room-head">
+            <h3>Verification</h3>
+            <form action="#" class="pull-right position" method="get">
+                <input type="text" placeholder="Search" name="id_taxe" class="form-control search-btn ">
+            </form>
+        </div>
+        @foreach (var contib in ViewBag.listecontri)
+        {
+            if (Model.id_contri == contib.id_contibuable)
+            { 
+                <div class="group-rom">
+                    <div class="first-part odd">NOM</div>
+                    <div class="second-part">@contib.nom_contibuable</div>
+
+                </div>
+                <div class="group-rom">
+                    <div class="first-part odd">PRENOM</div>
+                    <div class="second-part">@contib.prenom_contibuable</div>
+
+                </div>
+
+            }
+        }
+        <div class="group-rom">
+            <div class="first-part odd">Montant a payer</div>
+            <div class="second-part">@Model.taux </div>
+
+        </div>
+        <div class="group-rom">
+            <div class="first-part">Annee fiscale</div>
+            <div class="second-part">@Model.anne </div>
+            <div class="third-part"></div>
+        </div>
+
+        <div class="group-rom">
+            <div class="first-part odd">borderaux</div>
+            <div class="second-part">
+
+                <p><img class="img-responsive" src="~/fichier/@Model.bordereau" alt="" width="170"></p>
+            </div>
+
+            <div class="third-part">@Model.date</div>
+
+        </div>
+
+        <footer>
+            <form method="post">
+                <div class="chat-txt">
+                    <input type="hidden" class="form-control" name="id_taxe" value="@Model.id_taxe">
+                    <input type="hidden" class="form-control" name="matricule" value="@Session["matricule"]">
+                </div>
+               
+                <button class="btn btn-theme text-right" type="submit" onclick="return confirm('voulez-vous verififier')">verifier </button>
+            </form>
+        </footer>
+
+
+
+    </aside>
+    <aside class="right-side">
+        <div class="user-head">
+            <h4 class="pull-left">payement</h4>
+           
+        </div>
+        <ul class="chat-available-user" style="overflow:scroll;">
+            @foreach (var data in ViewBag.listetaxe)
+            {
+                foreach (var contibuable in ViewBag.listecontri)
+                {
+                    {
+                        if (data.id_contri == contibuable.id_contibuable && data.etat == "0")
+                        {
+                            int id = @data.id_taxe;
+                            string prenom = @contibuable.prenom_contibuable;
+                            string nom = @contibuable.nom_contibuable;
+            <li>
+
+                <img class="img-circle" src="~/fichier/@contibuable.photo_contibuable" width="32">
+
+
+
+
+                @{
+                    int idc = @data.id_taxe;}
+                @Ajax.ActionLink(@prenom + " " + @nom, "_listetaxe", new { id_taxe = id }, new AjaxOptions
+           {
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "divtaxe",
+               HttpMethod = "GET",
+               OnFailure = "erreurajax",
+           })
+                <span class="text-muted">@data.date</span>
+            </li>
+                        }
+                    }
+                }
+            }
+        </ul>
+      
+    </aside>
+</div>

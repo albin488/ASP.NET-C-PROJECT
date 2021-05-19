@@ -1,0 +1,162 @@
+﻿@{
+//  var idfr = Session["idfr"];
+}
+<div class="chat-room mt">
+    <aside class="mid-side " >
+
+
+        <div class="chat-room-head">
+            <h3>Verification</h3>
+            <form action="#" class="pull-right position">
+                <input type="text" placeholder="Search" class="form-control search-btn ">
+            </form>
+        </div>
+
+        <div id="student_show">
+
+            @{
+
+//Html.RenderAction("_listetaxe", new { id_taxe =ViewBag.id });
+// await Html.RenderPartial("_listetaxe", new { id_taxe = ViewBag.id });
+
+            }
+        </div>
+        <div id="divtaxe">
+
+        </div>
+
+        <footer>
+         
+        </footer>
+
+
+
+    </aside>
+    <aside class="right-side">
+        <div class="user-head">
+            <a href="#" onclick="" class="chat-tools btn-theme"><i class="fa fa-cog"></i> </a>
+            <a href="#" class="chat-tools btn-theme03"><i class="fa fa-key"></i> </a>
+        </div>
+        <div class="invite-row">
+            <h4 class="pull-left">payement</h4>
+            <a href="#" class="btn btn-theme04 pull-right">+ Invite</a>
+        </div>
+        <ul class="chat-available-user" style="overflow:scroll;">
+            @foreach (var data in ViewBag.listetaxe)
+            {
+                foreach (var contibuable in ViewBag.listecontri)
+                {
+                    {
+                        if (data.id_contri == contibuable.id_contibuable && data.etat == "0")
+                        {
+                            int id = @data.id_taxe;
+                            string prenom = @contibuable.prenom_contibuable;
+                            string nom = @contibuable.nom_contibuable;
+            <li>
+
+                <img class="img-circle" src="~/fichier/@contibuable.photo_contibuable" width="32">
+
+
+
+
+                @{
+                    int idc = @data.id_taxe;}
+                @Ajax.ActionLink(@prenom + " " + @nom, "_listetaxe", new { id_taxe = id }, new AjaxOptions
+           {
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "divtaxe",
+               HttpMethod = "GET",
+               OnFailure = "erreurajax",
+           })
+                <span class="text-muted">@data.date</span>
+
+            </li>
+                                                }
+                                            }
+                                        }
+                                    }
+        </ul>
+       
+    </aside>
+</div>
+
+
+<script type="text/javascript">
+ /*function showdiv(id_taxe) {
+        $("#veriftex").css('visibility', 'visible');
+        // alert("ok" + id_taxe)
+        var data{
+        "USER_ID" :id_taxe
+   }
+        $.ajax({
+            url: 'Taxe/_listetaxe/' + id_taxe,
+
+            type: 'GET',
+             contentType: 'application/json; charset=utf-8',
+          error: function (err) {
+                alert('erreur' + err.statusText);
+            },
+            success: function (result) {
+                 $('#divtaxe').fadeOut(800, function () {
+                     form.html('#divtaxe').fadeIn().delay(2000);
+                 });
+                $('#divtaxe').html(result);
+            },
+           async: true,
+             processData: false
+        })
+
+
+
+
+    }*/
+    $('.showList').click(function (e) {
+        var rows_num = this.getAttribute("data_rows");
+        $.ajax({
+            type: "GET",
+            url: "/Taxe/_listetaxe",
+            data: { id_taxe: rows_num },
+            success: function (data) {
+                $("student_show").html.(data);
+            },
+            error: function () {
+                alert("something went wrong in controller");
+            }
+
+        });
+    });
+    function erreurajax() {
+        $("student_show").html.("something went wrong in controller");
+    }
+
+
+    function dialogue(a) {
+        $(document).ready(function () {
+            //alert("bbbbbbbb");
+            $("#myMo").modal('show');
+        });
+    }
+   /* $(document).ready(function(){
+
+                     //alert("bbbbbbbb");
+                     $("#myMo").modal();
+     });*/
+    function showpop(url, title) {
+
+        $.ajax({
+
+            type: "GET",
+            url: url,
+            success: function (res) {
+                $("#myMo .modal-body").html(res);
+                $("#myMo").modal('show');
+            }
+        });
+    }
+    function albin(id_taxe) {
+        var rows_num = id_taxe;
+       @{//Html.RenderAction("_listetaxe", new { id_taxe =  });
+       }
+    };
+</script>
+

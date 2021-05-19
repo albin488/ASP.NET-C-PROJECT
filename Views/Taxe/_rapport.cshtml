@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Taxes.Models.quitance>
+<section class="site-min-height">
+    <form method="get" action="_rapport" class="center">
+        <div class="form-group">
+            <label class="control-label ">Du</label>
+            <div class="input-group date dpYears" data-date="01/01/2014" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
+                <input type="text" class="form-control-range dpd1" name="start">
+                <span class="input-group-addon">au</span>
+                <input type="text" class="form-control-range dpd2" name="end">
+            </div>
+            <span class="help-block">Select date range</span>
+        </div>
+    </form>
+    <!-- /row -->
+    <div class="row content-panel">
+        <h2 class="center">Rapport</h2>
+        <div class="col-md-10 col-md-offset-1 mt mb">
+
+            <div class="accordion-holder" id="accordion2">
+
+                @foreach (var data in ViewBag.listetaxe)
+                {
+                    foreach (var contibuable in ViewBag.listecontri)
+                    {
+                        foreach (var agent in ViewBag.listagent)
+                        {
+                            string etat = data.etat;
+                            if (data.id_contri == contibuable.id_contibuable && etat == "1" && data.matricule == agent.matricule)
+                            {
+                                <div class="accordion-group" role="tablist" aria-multiselectable="true">
+                                    <div class="accordion-heading" role="tab">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#@data.id_taxe" aria-expanded="false" aria-controls="@data.id_taxe">
+                                            <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>@contibuable.nom_contibuable   @contibuable.prenom_contibuable  @data.date
+                                        </a>
+                                    </div>
+                                    <div id="@data.id_taxe" class="panel-collapse collapse ">
+                                        <div class="accordion-inner">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="custom-box">
+                                                            <div class="servicetitle">
+                                                                <h4>Taxe</h4>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="icn-main-container">
+                                                                <span class="icn-container">@data.taux</span>
+                                                            </div>
+                                                            <ul class="pricing">
+                                                                <li>date de payement @data.date</li>
+                                                                <li>annee d'imposition @data.anne</li>
+                                                                <li>montant paye @data.taux fbu</li>
+
+                                                            </ul>
+                                                        </div>
+                                                        <!-- end custombox -->
+                                                    </div>
+                                                    <!-- end col-4 -->
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="custom-box">
+                                                            <div class="servicetitle">
+                                                                <h4>Cotribuable</h4>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="icn-main-container">
+                                                                <img class="img-circle" src="~/fichier/@contibuable.photo_contibuable" width="130" />
+                                                            </div>
+                                                            <ul class="pricing">
+                                                                <li>@contibuable.nom_contibuable   @contibuable.prenom_contibuable</li>
+                                                                <li>tel @contibuable.telephon_contibuable</li>
+                                                                <li>adress @contibuable.adresse</li>
+
+                                                            </ul>
+                                                        </div>
+                                                        <!-- end custombox -->
+                                                    </div>
+                                                    <!-- end col-4 -->
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="custom-box">
+                                                            <div class="servicetitle">
+                                                                <h4>Agent</h4>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="icn-main-container">
+                                                                <img class="img-circle" src="~/fichier/@agent.photo_agent" width="130" />
+                                                            </div>
+                                                            <ul class="pricing">
+                                                                <li>@agent.nom_agent @agent.prenom_agent</li>
+                                                                <li>matricule @agent.matricule</li>
+                                                                <li>adress @agent.adress</li>
+
+                                                            </ul>
+                                                        </div>
+                                                        <!-- end custombox -->
+                                                    </div>
+                                                    <!-- end col-4 -->
+                                                </div>
+                                                <!--  /col-lg-12 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                }
+        
+                                </div>
+                                <!-- end accordion -->
+                            </div>
+        <!-- col-md-10 -->
+    </div>
+    <!--  /row -->
+</section>

@@ -1,0 +1,111 @@
+﻿@model Taxes.Models.contibuable
+@{
+    ViewBag.Title = "edit contribuable";
+}
+<h2>@ViewBag.Title.</h2>
+
+
+<!-- /row -->
+
+<div class="col-lg-15">
+    <h4><i class="fa fa-angle-right"></i>Entre les informaton du contribuable</h4>
+    <div class="form-panel">
+        <div class="form">
+            <form class="cmxform form-horizontal style-form" id="signupForm" method="post" action="" enctype="multipart/form-data">
+                <div class="btn-group" data-toggle="buttons">
+
+                    <div class="form-group ">
+                       
+                        <div class="col-lg-10">
+                            <input class=" form-control" id="lastname" name="id_contibuable" type="hidden" value="@Model.id_contibuable" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="lastname" class="control-label col-lg-2">Nom</label>
+                        <div class="col-lg-10">
+                            <input class=" form-control" id="lastname" name="nom_contibuable" type="text" value="@Model.nom_contibuable" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="username" class="control-label col-lg-2">Prenom</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="username" name="prenom_contibuable" type="text" value="@Model.prenom_contibuable" />
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">CNI</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " name="cni_contibuable" type="text" value="@Model.cni_contibuable" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">telephone</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " name="telephon_contibuable" type="text" value="@Model.telephon_contibuable" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">Activite</label>
+                        <div class="col-lg-10">
+
+                            <select class="form-control" name="activite">
+                                <option>@Model.activite</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group ">
+                        <label for="email" class="control-label col-lg-2">Login</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="email" name="login" type="text" value="@Model.login" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">Password</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="password" name="pass" type="password" value="@Model.pass" />
+                            <input class="form-control " id="etat" name="etat" type="password" value="@Model.etat" />
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group text-right" data-toggle="buttons">
+                    <div class="form-group last">
+
+                        <label for="password" class="control-label col-lg-2">Photo</label>
+
+                        <div class="col-md-9">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                                </div>
+                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                <div>
+                                    <span class="btn btn-theme02 btn-file">
+                                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                        <input type="file" class="default" name="file" />
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-theme" type="submit">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /form-panel -->
+</div>
+<!-- /col-lg-12 -->
+<!-- /row -->

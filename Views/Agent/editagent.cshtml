@@ -1,0 +1,89 @@
+﻿@model Taxes.Models.agent
+<div class="row mt">
+    <h4><i class="fa fa-angle-right"></i>Edit agent</h4>
+    <div class="form-panel">
+        <div class="form">
+            <form class="cmxform form-horizontal style-form" id="signupForm" method="post" action="" enctype="multipart/form-data">
+                <div class="btn-group" data-toggle="buttons">
+
+                    <div class="form-group ">
+                        <label for="firstname" class="control-label col-lg-2">Matricule</label>
+                        <div class="col-lg-10">
+                            <input class=" form-control" id="firstname" name="matricule" type="hidden" value="@Model.matricule" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="lastname" class="control-label col-lg-2">Nom</label>
+                        <div class="col-lg-10">
+                            <input class=" form-control" id="lastname" name="nom_agent" type="text" value="@Model.nom_agent" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="username" class="control-label col-lg-2">Prenom</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="username" name="prenom_agent" type="text" value="@Model.prenom_agent" />
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">Adress</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="confirm_password" name="adress" type="text" value="@Model.adress" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="email" class="control-label col-lg-2">Login</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="email" name="login" type="text" value="@Model.login" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="confirm_password" class="control-label col-lg-2">Password</label>
+                        <div class="col-lg-10">
+                            <input class="form-control " id="password" name="pass" type="password" value="@Model.pass" />
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group text-right" data-toggle="buttons">
+                    <div class="form-group last">
+
+                        <label for="file" class="control-label col-lg-2">Photo</label>
+
+                        <div class="col-md-9 center">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="@Model.photo_agent" alt="" />
+                                </div>
+                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                <div>
+                                    <span class="btn btn-theme02 btn-file">
+                                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selectionner un image</span>
+                                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                        <input type="file" class="default" name="file" value="@Model.photo_agent" />
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-theme" type="submit">Modifier</button><a class="btn btn-theme center" href="~/Agent/Listeagent">Annuler</a>
+                        </div>
+
+                    </div>
+                    <div class="form-group text-right">
+                        <div>
+                            
+                        </div>
+                    </div>
+               
+</form>
+        </div>
+    </div>
+</div>
+    <!-- /form-panel -->

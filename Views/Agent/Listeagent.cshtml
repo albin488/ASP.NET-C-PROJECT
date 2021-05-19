@@ -1,0 +1,76 @@
+﻿
+<h3><i class="fa fa-angle-right"></i> Liste des Agents</h3>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+
+                <thead>
+
+                    <tr>
+                        <th>Matricule</th>
+                        <th>Nom</th>
+                        <th class="hidden-phone">Prenom</th>
+                        <th class="hidden-phone">Adress</th>
+                        <th class="hidden-phone"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in ViewBag.listesagent)
+                    {
+                        <tr class="gradeA">
+                            <td>@data.matri </td>
+                            <td>@data.nom_agent</td>
+                            <td>@data.prenom_agent</td>
+                            <td class="center">@data.adress</td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+
+                                        <li><a class="btn btn-round btn-warning fa fa-pencil" href="~/Agent/editagent/@data.matri"></a></li>
+
+                                        @if (Session["role"] == "admin")
+                                        {
+                                            <li><a class="btn btn-round btn-danger fa fa-trash" href="~/Agent/delagent/@data.matri"></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <span class="pull-right">
+                <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+            </span>
+
+        </div>
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Forgot Password ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your e-mail address below to reset your password.</p>
+                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-theme" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page end-->
+</div>
+
+<!-- /row -->

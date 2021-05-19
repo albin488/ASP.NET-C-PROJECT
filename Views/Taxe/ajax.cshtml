@@ -1,0 +1,38 @@
+﻿@model Taxes.Models.quitance
+<div class="chat-room-head">
+    <h3>Chat Room: Support</h3>
+    <form action="#" class="pull-right position">
+        <input type="text" placeholder="Search" class="form-control search-btn ">
+    </form>
+</div>
+<div class="group-rom">
+    <div class="first-part odd">Montant a payer</div>
+    <div class="second-part">@Model.taux</div>
+   
+</div>
+<div class="group-rom">
+    <div class="first-part">Annee fiscale</div>
+    <div class="second-part">@Model.anne</div>
+    <div class="third-part">12:31</div>
+</div>
+
+<div class="group-rom">
+<a href="~/Views/Taxe/ajax.cshtml">~/Views/Taxe/ajax.cshtml</a>
+    <div class="first-part odd">borderaux</div>
+    <div class="second-part">
+       
+        <p><img class="img-responsive" src="~/fichier/@Model.bordereau" alt="" width="170"></p>
+    </div>
+    <div class="third-part">12:32</div>
+</div>
+
+<footer>
+    <div class="chat-txt">
+        <input type="text" class="form-control">
+    </div>
+    <div class="btn-group hidden-sm hidden-xs">
+        <button type="button" class="btn btn-white"><i class="fa fa-meh-o"></i></button>
+        <button type="button" class="btn btn-white"><i class=" fa fa-paperclip"></i></button>
+    </div>
+    <button class="btn btn-theme">Send</button>
+</footer>

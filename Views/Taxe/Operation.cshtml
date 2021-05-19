@@ -1,0 +1,58 @@
+﻿<h3><i class="fa fa-angle-right"></i> Liste des Contribuable</h3>
+<div class="row mb">
+    <!-- page start-->
+    <div class="content-panel">
+        <div class="adv-table">
+
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+
+                <thead class="center">
+
+                    <tr>
+                        <th>Id</th>
+                        <th>montant</th>
+                        <th class="hidden-phone">Annee fiscale</th>
+                        <th class="hidden-phone">date</th>
+                        <th class="hidden-phone">Bordereau</th>
+                        <th class="hidden-phone">Etat</th>
+                        <th class="hidden-phone"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in ViewBag.listetaxe)
+                    {
+                    <tr class="gradeA">
+                        <td>@data.id_taxe</td>
+                        <td class="center">@data.taux</td>
+                        <td><a> @data.anne</a></td>
+                        <td class="center">@data.date</td>
+
+                        <td><a class="fancybox" href="~/fichier/@data.bordereau"> voir</a></td>
+                        <div class="overlay"></div>
+                        <td>@if (data.etat == "1")
+                        { <i class="btn btn-round btn-success fa fa-check"></i>}
+                        else { <p>en cour de traitement</p>}</td>
+                        <td class="center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                  
+                                    <li><a class="btn btn-round btn-warning fa fa-pencil" href="~/Taxe/editcontribuable/@data.id_taxe"></a></li>
+                                    <li><a class="btn btn-round btn-danger fa fa-trash" href="~/Taxe/delcontribuable/@data.id_taxe"></a></li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    
+    </div>
+    <!-- page end-->
+</div>
